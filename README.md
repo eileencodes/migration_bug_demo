@@ -1,24 +1,41 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Clone the repo
 
-Things you may want to cover:
+```
+git clone git@github.com:eileencodes/migration_bug_demo.git
+```
 
-* Ruby version
+Run setup script
 
-* System dependencies
+```
+bin/setup
+```
 
-* Configuration
+Checkout the branch linked to master rails branch
 
-* Database creation
+```
+git checkout rails-master
+```
 
-* Database initialization
 
-* How to run the test suite
+Run setup script again
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+bin/setup
+```
 
-* Deployment instructions
+You will see the following error when the script hits db:seed
 
-* ...
+
+```
+ActiveRecord::NotNullViolation: Mysql2::Error: Field 'id' doesn't have a default value: INSERT INTO `posts` (`title`, `created_at`, `updated_at`) VALUES ('This is a title', '2016-12-15 16:45:01', '2016-12-15 16:45:01')
+/Users/eileen/Sites/open_source/rails_apps/migration_test_app/db/seeds.rb:9:in `<top (required)>'
+bin/rails:4:in `require'
+bin/rails:4:in `<main>'
+Mysql2::Error: Field 'id' doesn't have a default value
+/Users/eileen/Sites/open_source/rails_apps/migration_test_app/db/seeds.rb:9:in `<top (required)>'
+bin/rails:4:in `require'
+bin/rails:4:in `<main>'
+Tasks: TOP => db:seed
+```
